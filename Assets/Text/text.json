@@ -1,0 +1,13 @@
+{
+	"icon": [
+		"The door is locked",
+		"Lock it lock, unlock it"
+	],
+	"enter_cave_test": [
+		"you just entered this cave",
+		"i would advise going back"
+	],
+	"": [
+		"WARNING: this shit empty girl"
+	]
+}

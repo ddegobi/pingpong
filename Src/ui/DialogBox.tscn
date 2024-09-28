@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bey0t5cip3nfg"]
+
+[ext_resource type="Script" path="res://Src/ui/dialog_box.gd" id="1_ph7uc"]
+[ext_resource type="FontFile" uid="uid://cq8hk8tjbvog1" path="res://Assets/Fonts/Minecraftia-Regular.ttf" id="2_gvsht"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5qwsr"]
+specular_color = Color(0.268815, 0.262031, 0.252769, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_aqt6d"]
+font = ExtResource("2_gvsht")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="DialogBox" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ph7uc")
+
+[node name="ControlScale" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="TextureRect" parent="ControlScale"]
+layout_mode = 0
+offset_left = -488.0
+offset_top = -178.0
+offset_right = 542.0
+offset_bottom = 4.0
+texture = SubResource("CanvasTexture_5qwsr")
+
+[node name="TextLabel" type="Label" parent="ControlScale"]
+layout_mode = 0
+offset_left = -470.0
+offset_top = -163.0
+offset_right = 523.0
+offset_bottom = -8.0
+label_settings = SubResource("LabelSettings_aqt6d")

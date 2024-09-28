@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=4 uid="uid://cg6acr28551ts"]
+
+[ext_resource type="Script" path="res://Src/Levels/level_2.gd" id="1_0kdtt"]
+[ext_resource type="Texture2D" uid="uid://cmgvkuahjy3pg" path="res://Assets/TileSets/tileset(8x8).png" id="1_cctsc"]
+[ext_resource type="PackedScene" uid="uid://dhbeueu0cmoyq" path="res://Src/World/DialogArea.tscn" id="2_66820"]
+[ext_resource type="PackedScene" uid="uid://euveehnonfke" path="res://Src/Player/Player.tscn" id="2_whmka"]
+[ext_resource type="Texture2D" uid="uid://d24qnbv2xxxms" path="res://icon.svg" id="3_d4tjw"]
+[ext_resource type="PackedScene" uid="uid://bey0t5cip3nfg" path="res://Src/ui/DialogBox.tscn" id="4_sp07b"]
+[ext_resource type="PackedScene" uid="uid://cuf77cq0rbnck" path="res://Src/ui/DisplayFPS.tscn" id="5_5dj8h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i2p46"]
+texture = ExtResource("1_cctsc")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1fdfg"]
+tile_size = Vector2i(8, 8)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_i2p46")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1nop"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_0kdtt")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_1fdfg")
+format = 2
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+tile_map_data = PackedByteArray("AAD8/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAD7/wQAAAAAAAAAAAD7/wMAAAAAAAAAAAD7/wIAAAAAAAAAAAD7/wEAAAAAAAAAAAD7/wAAAAAAAAAAAAD7////AAAAAAAAAAD7//7/AAAAAAAAAAD7//3/AAAAAAAAAAD7//z/AAAAAAAAAAD7//v/AAAAAAAAAAD7//r/AAAAAAAAAAD8//r/AAAAAAAAAAD9//r/AAAAAAAAAAD+//r/AAAAAAAAAAD///r/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAD+/wEAAAACAAAAAAD+/wAAAAACAAAAAAD+////AAACAAAAAAD+//7/AAACAAAAAAD+//3/AAACAAAAAAD+//z/AAACAAAAAAD+//v/AAACAAAAAAD9//v/AAACAAAAAAD8//v/AAACAAAAAAD8//z/AAACAAAAAAD8//3/AAACAAAAAAD8//7/AAACAAAAAAD8////AAACAAAAAAD8/wAAAAACAAAAAAD8/wEAAAACAAAAAAD8/wIAAAACAAAAAAD8/wMAAAACAAAAAAD9/wMAAAACAAAAAAD9/wIAAAACAAAAAAD9/wEAAAACAAAAAAD9/wAAAAACAAAAAAD9////AAACAAAAAAD9//7/AAACAAAAAAD9//3/AAACAAAAAAD9//z/AAACAAAAAAD+/wIAAAACAAAAAAD+/wMAAAACAAAAAAD//wMAAAACAAAAAAD//wIAAAACAAAAAAD//wEAAAACAAAAAAD//wAAAAACAAAAAAD/////AAACAAAAAAD///7/AAACAAAAAAD///3/AAACAAAAAAD///z/AAACAAAAAAAAAPz/AAACAAAAAAAAAP3/AAACAAAAAAAAAP7/AAACAAAAAAAAAP//AAACAAAAAAAAAAAAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAAAAAMAAAACAAAAAAABAAMAAAACAAAAAAABAAIAAAACAAAAAAABAAEAAAACAAAAAAABAAAAAAACAAAAAAABAP//AAACAAAAAAABAP7/AAACAAAAAAABAP3/AAACAAAAAAABAPz/AAACAAAAAAACAPz/AAACAAAAAAACAP3/AAACAAAAAAACAP7/AAACAAAAAAACAP//AAACAAAAAAACAAAAAAACAAAAAAACAAEAAAACAAAAAAACAAIAAAACAAAAAAACAAMAAAACAAAAAAADAAMAAAACAAAAAAADAAIAAAACAAAAAAADAAEAAAACAAAAAAADAAAAAAACAAAAAAADAP//AAACAAAAAAADAP7/AAACAAAAAAADAP3/AAACAAAAAAADAPz/AAACAAAAAAAEAAIAAAACAAAAAAAEAAMAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_1fdfg")
+
+[node name="DialogArea" parent="." instance=ExtResource("2_66820")]
+position = Vector2(-20, -27)
+dialog_key = "enter_cave_test"
+available = "once"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DialogArea"]
+shape = SubResource("RectangleShape2D_c1nop")
+
+[node name="Sprite2D" type="Sprite2D" parent="DialogArea"]
+position = Vector2(4.17233e-07, 9.38773e-07)
+scale = Vector2(0.15625, 0.160156)
+texture = ExtResource("3_d4tjw")
+
+[node name="Player" parent="." instance=ExtResource("2_whmka")]
+position = Vector2(25, 23)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="DialogBox" parent="." instance=ExtResource("4_sp07b")]
+scene_text_file = "res://Assets/Text/text.json"
+
+[node name="DisplayFPS" parent="." instance=ExtResource("5_5dj8h")]
